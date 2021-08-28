@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "This is API based microservice to get mocked products",
-    "version": "2021-08-28T22:29:54Z",
+    "version": "2021-08-28T23:48:03Z",
     "title": "product-service-dev",
     "contact": {
       "name": "ragexe",
