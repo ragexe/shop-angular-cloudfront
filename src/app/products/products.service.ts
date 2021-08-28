@@ -1,8 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ProductServiceService } from '../api/products/generated/services';
 
-import { ProductServiceService } from '../api/products/generated/controllers/ProductService';
 import { ApiService } from '../core/api.service';
 import { Product } from './product.interface';
 
@@ -25,15 +25,15 @@ export class ProductsService extends ApiService {
       return this.http.get<Product[]>('/assets/products.json');
     }
 
-    return this.productServiceService.getProductsList({}).pipe(
+    return this.productServiceService.getGetProductsList().pipe(
       map((apiProducts) =>
-        apiProducts.map<Product>((apiProduct) => ({
+        (apiProducts.products ?? []).map<Product>((apiProduct) => ({
           count: apiProduct.variant.attributes.maxOrderQuantity,
           description: apiProduct.name,
           id: apiProduct.id,
           price: apiProduct.variant.price.formattedValue,
           title: apiProduct.name,
-          baseImgUrl: apiProduct.baseImgUrl,
+          baseImgUrl: apiProduct.primaryImage,
           slug: apiProduct.slug,
         }))
       )

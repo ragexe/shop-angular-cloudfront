@@ -11,7 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { environment } from '../environments/environment';
-import { ProductsAPIModule } from './api/products/products.module';
+import * as ProductsAPI from './api/products/generated/api.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartModule } from './cart/cart.module';
@@ -44,7 +44,7 @@ const interceptors: Provider[] = [
     HttpClientModule,
     MatBadgeModule,
     MatSnackBarModule,
-    ProductsAPIModule.forRoot(),
+    ProductsAPI.ApiModule.forRoot({ rootUrl: environment.apiEndpoints.bff }),
   ],
   providers: [
     interceptors,

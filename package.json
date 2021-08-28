@@ -25,7 +25,7 @@
     "sls:build:deploy:nc": "npm run build:prod && npm run sls:client:deploy:nc",
     "sls:cloud:build:deploy:nc": "npm run sls:build:deploy:nc && npm run sls:cloud:invalidateCache",
     "sls:cloud:update:build:deploy:nc": "npm run sls:cloud:setup && npm run sls:cloud:build:deploy:nc",
-    "api:generate": "swagger-angular-generator -s src/app/api/products/swagger-api.json -d src/app/api/products/generated --no-store"
+    "api:generate": "node_modules/.bin/ng-swagger-gen -i ./src/app/api/products/swagger-api.json -o ./src/app/api/products/generated"
   },
   "private": true,
   "dependencies": {
@@ -74,12 +74,12 @@
     "karma-jasmine": "~4.0.0",
     "karma-spec-reporter": "0.0.32",
     "lint-staged": "^10.5.4",
+    "ng-swagger-gen": "^2.3.1",
     "prettier": "^2.3.0",
     "pretty-quick": "^3.1.0",
     "protractor": "~7.0.0",
     "serverless-finch": "^2.6.0",
     "serverless-single-page-app-plugin": "./lib/serverless-single-page-app-plugin",
-    "swagger-angular-generator": "^4.2.2",
     "ts-node": "^9.1.1",
     "typescript": "~4.2.4"
   },

@@ -1,88 +1,93 @@
 {
-	"root": true,
-	"ignorePatterns": ["projects/**/*", "dist/**/*"],
-	"overrides": [
-		{
-			"files": ["*.ts"],
-			"excludedFiles": "src/app/api/*/generated/**/*.ts",
-			"parserOptions": {
-				"project": ["tsconfig.json", "e2e/tsconfig.json"],
-				"createDefaultProgram": true
-			},
-			"extends": [
-				"plugin:@angular-eslint/ng-cli-compat",
-				"plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
-				"plugin:@angular-eslint/template/process-inline-templates",
-				"plugin:rxjs/recommended",
-				"prettier"
-			],
-			"rules": {
-				"@angular-eslint/component-selector": [
-					"error",
-					{
-						"type": "element",
-						"prefix": "app",
-						"style": "kebab-case"
-					}
-				],
-				"@angular-eslint/directive-selector": [
-					"error",
-					{
-						"type": "attribute",
-						"prefix": "app",
-						"style": "camelCase"
-					}
-				],
-				"rxjs/no-subject-value": [0]
-			}
-		},
-		{
-			"files": ["src/app/api/*/generated/**/*.ts"],
-			"parserOptions": {
-				"project": ["tsconfig.json", "e2e/tsconfig.json"],
-				"createDefaultProgram": true
-			},
-			"extends": [
-				"plugin:@angular-eslint/ng-cli-compat",
-				"plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
-				"plugin:@angular-eslint/template/process-inline-templates",
-				"plugin:rxjs/recommended",
-				"prettier"
-			],
-			"rules": {
-				"@angular-eslint/component-selector": [
-					"error",
-					{
-						"type": "element",
-						"prefix": "app",
-						"style": "kebab-case"
-					}
-				],
-				"@angular-eslint/directive-selector": [
-					"error",
-					{
-						"type": "attribute",
-						"prefix": "app",
-						"style": "camelCase"
-					}
-				],
-				"newline-after-description": ["off"],
-				"prefer-arrow/prefer-arrow-functions": ["off"],
-				"@typescript-eslint/naming-convention": ["off"]
-			}
-		},
-		{
-			"files": ["*.html"],
-			"extends": ["plugin:@angular-eslint/template/recommended", "prettier"],
-			"rules": {}
-		},
-		{
-			"files": ["*.spec.ts"],
-			"plugins": ["jasmine"],
-			"extends": ["plugin:jasmine/recommended"],
-			"env": {
-				"jasmine": true
-			}
-		}
-	]
+  "root": true,
+  "ignorePatterns": ["projects/**/*", "dist/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "excludedFiles": "src/app/api/*/generated/**/*.ts",
+      "parserOptions": {
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:rxjs/recommended",
+        "prettier"
+      ],
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "rxjs/no-subject-value": [0]
+      }
+    },
+    {
+      "files": ["src/app/api/*/generated/**/*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:rxjs/recommended",
+        "prettier"
+      ],
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "newline-after-description": ["off"],
+        "prefer-arrow/prefer-arrow-functions": ["off"],
+        "@typescript-eslint/naming-convention": ["off"],
+        "@typescript-eslint/prefer-namespace-keyword": ["off"],
+        "@typescript-eslint/no-namespace": ["off"],
+        "no-underscore-dangle": ["off"],
+        "@typescript-eslint/member-ordering": ["off"],
+        "@typescript-eslint/no-inferrable-types": ["off"]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended", "prettier"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts"],
+      "plugins": ["jasmine"],
+      "extends": ["plugin:jasmine/recommended"],
+      "env": {
+        "jasmine": true
+      }
+    }
+  ]
 }
