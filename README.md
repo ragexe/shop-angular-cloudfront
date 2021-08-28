@@ -9,6 +9,16 @@ Presented a full-stack application (**Brickage**) store for the sale of Lego con
 
 - `npm ci` - install all required modules for the development
 
+## API generation
+
+#### Product service
+
+Place `swagger-api.json` under the path `./src/app/api/products` and run the following scripts:
+
+- `npm run-script api:generate`
+
+_Note: The command requires permission to create folders_
+
 ## Running locally
 
 - `npm run-script start`

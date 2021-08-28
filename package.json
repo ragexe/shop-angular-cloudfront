@@ -1,6 +1,6 @@
 {
 	"name": "brickage-client",
-	"version": "0.0.1",
+	"version": "0.1.1",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
@@ -23,7 +23,8 @@
 		"sls:client:deploy:nc": "npm run sls:client:deploy -- --no-confirm",
 		"sls:build:deploy:nc": "npm run build:prod && npm run sls:client:deploy:nc",
 		"sls:cloud:build:deploy:nc": "npm run sls:build:deploy:nc && npm run sls:cloud:invalidateCache",
-		"sls:cloud:update:build:deploy:nc": "npm run sls:cloud:setup && npm run sls:cloud:build:deploy:nc"
+		"sls:cloud:update:build:deploy:nc": "npm run sls:cloud:setup && npm run sls:cloud:build:deploy:nc",
+		"api:generate": "swagger-angular-generator -s src/app/api/products/swagger-api.json -d src/app/api/products/generated --no-store"
 	},
 	"private": true,
 	"dependencies": {
@@ -77,6 +78,7 @@
 		"protractor": "~7.0.0",
 		"serverless-finch": "^2.6.0",
 		"serverless-single-page-app-plugin": "./lib/serverless-single-page-app-plugin",
+		"swagger-angular-generator": "^4.2.2",
 		"ts-node": "^9.1.1",
 		"typescript": "~4.2.4"
 	},
