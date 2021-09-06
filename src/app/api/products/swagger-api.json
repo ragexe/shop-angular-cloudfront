@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "This is API based microservice to get mocked products",
-    "version": "2021-08-28T23:48:03Z",
+    "version": "2021-09-06T02:55:56Z",
     "title": "product-service-dev",
     "contact": {
       "name": "ragexe",
@@ -53,19 +53,25 @@
           "200": {
             "description": "200 response",
             "schema": {
-              "$ref": "#/definitions/ProductsWrapper"
+              "$ref": "#/definitions/ResponseWithMessage"
             }
           },
           "400": {
             "description": "400 response",
             "schema": {
-              "$ref": "#/definitions/JsonResponse400"
+              "$ref": "#/definitions/ResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/ResponseWithMessage"
             }
           },
           "404": {
             "description": "404 response",
             "schema": {
-              "$ref": "#/definitions/JsonResponse404"
+              "$ref": "#/definitions/ResponseWithMessage"
             }
           }
         }
@@ -116,7 +122,79 @@
           "400": {
             "description": "400 response",
             "schema": {
-              "$ref": "#/definitions/JsonResponse400"
+              "$ref": "#/definitions/ResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/ResponseWithMessage"
+            }
+          }
+        }
+      },
+      "options": {
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postProduct": {
+      "post": {
+        "tags": ["product-service"],
+        "summary": "Store provided product to database",
+        "description": "Saves the object to the database on the server",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "debug",
+            "in": "query",
+            "description": "If true the API response contains event object",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "StoreProduct",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StoreProduct"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/ResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/ResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/ResponseWithMessage"
             }
           }
         }
@@ -162,6 +240,47 @@
         "Sold out",
         "Temporarily out of stock"
       ]
+    },
+    "StoreProduct": {
+      "type": "object",
+      "required": ["product"],
+      "properties": {
+        "product": {
+          "type": "object",
+          "properties": {
+            "productCode": {
+              "type": "string"
+            },
+            "primaryImage": {
+              "type": "string"
+            },
+            "baseImgUrl": {
+              "type": "string"
+            },
+            "__typename": {
+              "$ref": "#/definitions/ProductTypename"
+            },
+            "name": {
+              "type": "string"
+            },
+            "variant": {
+              "$ref": "#/definitions/Variant"
+            },
+            "slug": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "__typename",
+            "baseImgUrl",
+            "name",
+            "primaryImage",
+            "productCode",
+            "slug",
+            "variant"
+          ]
+        }
+      }
     },
     "Attributes": {
       "type": "object",
@@ -271,17 +390,6 @@
         }
       }
     },
-    "JsonResponse400": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string"
-        },
-        "statusCode": {
-          "type": "number"
-        }
-      }
-    },
     "Variant": {
       "type": "object",
       "required": [
@@ -320,17 +428,6 @@
     "CurrencyCode": {
       "type": "string",
       "enum": ["USD"]
-    },
-    "JsonResponse404": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string"
-        },
-        "statusCode": {
-          "type": "number"
-        }
-      }
     },
     "AvailabilityStatus": {
       "type": "string",
@@ -397,6 +494,14 @@
     "ProductTypename": {
       "type": "string",
       "enum": ["SingleVariantProduct"]
+    },
+    "ResponseWithMessage": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
     },
     "ProductsWrapper": {
       "type": "object",
