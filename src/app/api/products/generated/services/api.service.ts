@@ -18,6 +18,7 @@ import { map as __map, filter as __filter } from 'rxjs/operators';
 class ApiService extends __BaseService {
   static readonly optionsGetProductsByIdPath = '/getProductsById';
   static readonly optionsGetProductsListPath = '/getProductsList';
+  static readonly optionsPostProductPath = '/postProduct';
 
   constructor(config: __Configuration, http: HttpClient) {
     super(config, http);
@@ -69,6 +70,31 @@ class ApiService extends __BaseService {
   }
   optionsGetProductsList(): __Observable<null> {
     return this.optionsGetProductsListResponse().pipe(
+      __map((_r) => _r.body as null)
+    );
+  }
+  optionsPostProductResponse(): __Observable<__StrictHttpResponse<null>> {
+    const __params = this.newParams();
+    const __headers = new HttpHeaders();
+    const __body: any = null;
+    const req = new HttpRequest<any>(
+      'OPTIONS',
+      this.rootUrl + `/postProduct`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json',
+      }
+    );
+
+    return this.http.request<any>(req).pipe(
+      __filter((_r) => _r instanceof HttpResponse),
+      __map((_r) => _r as __StrictHttpResponse<null>)
+    );
+  }
+  optionsPostProduct(): __Observable<null> {
+    return this.optionsPostProductResponse().pipe(
       __map((_r) => _r.body as null)
     );
   }
