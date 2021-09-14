@@ -1,6 +1,6 @@
 {
   "name": "brickage-client",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -25,7 +25,20 @@
     "sls:build:deploy:nc": "npm run build:prod && npm run sls:client:deploy:nc",
     "sls:cloud:build:deploy:nc": "npm run sls:build:deploy:nc && npm run sls:cloud:invalidateCache",
     "sls:cloud:update:build:deploy:nc": "npm run sls:cloud:setup && npm run sls:cloud:build:deploy:nc",
+    "bump-version:patch": "npm version patch",
+    "bump-version:minor": "npm version minor",
+    "bump-version:major": "npm version major",
+    "bump-version:patch:no-tag": "npm version patch --no-git-tag-version",
+    "bump-version:minor:no-tag": "npm version minor --no-git-tag-version",
+    "bump-version:major:no-tag": "npm version major --no-git-tag-version",
+    "tag-version": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags",
+    "release:patch": "npm bump-version:patch && npm run sls:cloud:update:build:deploy:nc",
+    "release:minor": "npm bump-version:minor && npm run sls:cloud:update:build:deploy:nc",
+    "release:major": "npm bump-version:major && npm run sls:cloud:update:build:deploy:nc",
     "api:generate": "node_modules/.bin/ng-swagger-gen -i ./src/app/api/products/swagger-api.json -o ./src/app/api/products/generated"
+  },
+  "engines": {
+    "node": ">=14.15.0"
   },
   "private": true,
   "dependencies": {

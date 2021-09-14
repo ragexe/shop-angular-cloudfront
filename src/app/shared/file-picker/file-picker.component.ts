@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-file-picker',
@@ -10,6 +17,9 @@ export class FilePickerComponent {
 
   @Output() fileChange = new EventEmitter<File | null>();
   @Output() uploadClick = new EventEmitter<void>();
+
+  @ViewChild('fileInput', { static: true })
+  fileInput!: ElementRef<HTMLInputElement>;
 
   selectFile(files: FileList | null): void {
     if (!files?.length) {
@@ -29,6 +39,8 @@ export class FilePickerComponent {
   }
 
   removeFile(): void {
+    this.fileInput.nativeElement.value = '';
+    this.fileInput.nativeElement.files = null;
     this.file = null;
     this.fileChange.emit(null);
   }
