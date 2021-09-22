@@ -5,6 +5,8 @@ import {
   Output,
   ViewChild,
   ElementRef,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 
 @Component({
@@ -12,7 +14,7 @@ import {
   templateUrl: './file-picker.component.html',
   styleUrls: ['./file-picker.component.scss'],
 })
-export class FilePickerComponent {
+export class FilePickerComponent implements OnChanges {
   @Input() file: File | null = null;
 
   @Output() fileChange = new EventEmitter<File | null>();
@@ -20,6 +22,15 @@ export class FilePickerComponent {
 
   @ViewChild('fileInput', { static: true })
   fileInput!: ElementRef<HTMLInputElement>;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes.file.currentValue !== changes.file.previousValue &&
+      changes.file.currentValue === null
+    ) {
+      this.removeFile();
+    }
+  }
 
   selectFile(files: FileList | null): void {
     if (!files?.length) {
