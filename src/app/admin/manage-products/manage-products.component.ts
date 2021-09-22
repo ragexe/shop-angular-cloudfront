@@ -19,7 +19,7 @@ export class ManageProductsComponent implements OnInit {
   constructor(
     private readonly productsService: ProductsService,
     private readonly manageProductsService: ManageProductsService,
-    private readonly cdr: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class ManageProductsComponent implements OnInit {
       .uploadProductsCSV(this.selectedFile)
       .subscribe(() => {
         this.selectedFile = null;
-        this.cdr.markForCheck();
+        this.changeDetectorRef.markForCheck();
       });
   }
 }
