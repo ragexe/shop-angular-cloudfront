@@ -17,7 +17,7 @@ import { ProductsWrapper } from '../models/products-wrapper';
 import { StoreProduct } from '../models/store-product';
 
 /**
- * Everything about providing products
+ * Made for Node in AWS course
  */
 @Injectable({
   providedIn: 'root',

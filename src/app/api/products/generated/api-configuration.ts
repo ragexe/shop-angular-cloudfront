@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiConfiguration {
   rootUrl: string =
-    'https://f5erv8t263.execute-api.eu-west-1.amazonaws.com/dev';
+    'https://bkvpcugaoe.execute-api.eu-west-1.amazonaws.com/dev';
 }
 
 export interface ApiConfigurationInterface {
