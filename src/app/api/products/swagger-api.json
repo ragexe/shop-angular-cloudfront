@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This is API based microservice to get mocked products",
-    "version": "2021-09-06T02:55:56Z",
+    "description": "API-based microservices for products",
+    "version": "2021-10-04T14:57:34Z",
     "title": "product-service-dev",
     "contact": {
       "name": "ragexe",
@@ -14,15 +14,15 @@
       "url": "https://www.github.com"
     }
   },
-  "host": "f5erv8t263.execute-api.eu-west-1.amazonaws.com",
+  "host": "bkvpcugaoe.execute-api.eu-west-1.amazonaws.com",
   "basePath": "/dev",
   "tags": [
     {
       "name": "product-service",
-      "description": "Everything about providing products",
+      "description": "Made for Node in AWS course",
       "externalDocs": {
         "description": "Find out more",
-        "url": "https://cutt.ly/VWq0pGZ"
+        "url": "https://cutt.ly/aWMxksK"
       }
     }
   ],
