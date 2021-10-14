@@ -9,6 +9,11 @@ Presented a full-stack application (**Brickage**) store for the sale of Lego con
 
 - `npm ci` - install all required modules for the development
 
+## Init git-submodules
+
+- `git submodule init`
+- `git submodule update`
+
 ## API generation
 
 #### Product service
