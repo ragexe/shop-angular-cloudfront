@@ -19,4 +19,17 @@ export class NotificationService {
       panelClass: 'shop-snackbar-error',
     });
   }
+
+  /**
+   * Show message with an alert
+   *
+   * @param text Error text message
+   * @param duration Duration to close after. 0 to close manually only
+   */
+  showAlert(text: string, duration = 3000) {
+    this.snackBar.open(text, 'Dismiss', {
+      duration,
+      panelClass: 'shop-snackbar-alert',
+    });
+  }
 }
